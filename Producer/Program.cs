@@ -31,7 +31,7 @@ namespace Producer
                     using (var channel = connection.CreateModel())
                     {
                         channel.ExchangeDeclare(exchange: "direct_logs", type: ExchangeType.Direct);
-                        string message = $"The message:{routingKey} error from publisher {counter}";
+                        string message = $"The message:{routingKey} from publisher {counter}";
                         var body = Encoding.UTF8.GetBytes(message);
                         channel.BasicPublish(exchange: "direct_logs", routingKey: "error", basicProperties: null, body: body);
                         Console.WriteLine($"The message:{routingKey} is sent to direct exchege {counter++}");
